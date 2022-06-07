@@ -6,7 +6,7 @@
 .card-parent img{
     width: 100%;
     height: 300px;
-    border: 2px solid #e67e22;
+    border: 2px solid yellowgreen;
 }
 
 .card-overlay{
@@ -35,7 +35,7 @@
 }
 
 .projectBtn{
-    background-color: #e67e22;
+    background-color: yellowgreen;
     border: none;
     color: #fff;
     padding: 10px 20px;

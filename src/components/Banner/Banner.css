@@ -13,7 +13,7 @@
 }
 
 .banner-img:hover img{
-    border: 10px solid #e74c3c;
+    border: 10px solid black;
     transform: scale(1.1);
 }
 

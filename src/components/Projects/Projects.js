@@ -1,69 +1,45 @@
-import React from 'react';
-import './Projects.css';
-import { Col, Container, Row } from 'react-bootstrap';
-import projectOne from '../../Images/project2.png';
-import projectTwo from '../../Images/project1.png';
-import projectThree from '../../Images/project4.png';
-import projectFour from '../../Images/project5.png';
+import React, { useEffect, useState } from "react";
+import "./Projects.css";
+import { Col, Container, Row } from "react-bootstrap";
+
+import { Link } from "react-router-dom";
 
 const Projects = () => {
-    return (
-        <div className="my-5">
-            <Container>
-                <h1 style={{ fontWeight: '700', color: '#2c3e50' }}>Here Some of My Projects</h1>
-                <Row className="mt-1 g-4" xs={1} md={2} lg={2}>
-                    <Col>
-                        <div className="card-parent">
-                            <img src={projectOne} alt="" />
-                            <div className="card-overlay">
-                                <div className="card-text">
-                                    <h3>Live Africa</h3>
-                                    <h6>This is a travel guide Website.Where You can Booked hotel near your trip.</h6>
-                                    <button className="projectBtn"><a href="https://assignment-11-travel.web.app/" className="text-decoration-none text-light">Go to Site</a></button>
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col>
-                    <div className="card-parent">
-                            <img src={projectTwo} alt="" />
-                            <div className="card-overlay">
-                                <div className="card-text">
-                                    <h3>We Secure</h3>
-                                    <h6>This is Security Camera Shop.You can Order Awesome featured Camera From Here.</h6>
-                                    <button className="projectBtn"><a href="https://we-c9007.web.app/" className="text-decoration-none text-light">Go to Site</a></button>
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col>
-                    <div className="card-parent">
-                            <img src={projectThree} alt="" />
-                            <div className="card-overlay">
-                                <div className="card-text">
-                                    <h3>BiShop</h3>
-                                    <h6>This is Cloth Shop.Where You can buy Different Types of Things Which You want.</h6>
-                                    <button className="projectBtn "><a href="https://econ43.netlify.app/" className="text-decoration-none text-light">Go to Site</a></button>
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col>
-                    <div className="card-parent">
-                            <img src={projectFour} alt="" />
-                            <div className="card-overlay">
-                                <div className="card-text">
-                                    <h3>Doctors Portal</h3>
-                                    <h6>This is Doctors Appointments Website.You can appoint doctors bia any dates.</h6>
-                                    <button className="projectBtn"><a href="https://doctors-portal-9ba13.web.app/" className="text-decoration-none text-light">Go to Site</a></button>
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
-    );
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    fetch("./projects.json")
+      .then((res) => res.json())
+      .then((data) => setProjects(data));
+  }, []);
+  return (
+    <div className="my-5">
+      <Container>
+        <h1 style={{ fontWeight: "700", color: "#2c3e50" }}>
+          Here Some Of my Project
+        </h1>
+        <Row className="mt-2 g-4" xs={1} md={2} lg={2}>
+          {projects?.map((project) => (
+            <Col>
+              <div className="card-parent">
+                <img src={project.image1} alt="" />
+                <div className="card-overlay">
+                  <div className="card-textt">
+                    <h5>{project.name}</h5>
+                    <p>{project.shortDescription}</p>
+                    <Link to={`/projectDetail/${project.id}`}>
+                      <button className="projectBtn">More Details</button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+
+       
+      </Container>
+    </div>
+  );
 };
 
 export default Projects;

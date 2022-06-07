@@ -1,0 +1,37 @@
+
+.form-area{
+    width: 550px;
+    margin: 0 auto;
+}
+
+.form-area input{
+    height: 50px;
+    border: 2px solid yellowgreen;
+    margin-bottom: 20px;
+}
+
+.form-area textarea{
+    height: 150px;
+    border: 2px solid yellowgreen;
+}
+
+.mailBtn{
+    border: none;
+    margin-top: 20px;
+    background-color: yellowgreen;
+    color: #fff;
+    padding: 10px 40px;
+    border-radius: 7px;
+    font-size: 18px;
+    transition: .4s;
+}
+
+.mailBtn:hover{
+    background-color: #e74c3c;
+}
+
+@media only screen and (max-width: 575px) {
+    .form-area{
+        width: 100%;
+    }
+}
